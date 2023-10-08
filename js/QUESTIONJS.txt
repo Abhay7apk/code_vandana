@@ -1,0 +1,34 @@
+JS ;
+Q1:Take a sentence as an input and reverse every word in that sentence.
+Example - This is a sunny day > shiT si a ynnus yad.
+
+
+// Prompt the user for input
+function reverseWords(sentence) {
+  // Split the sentence into words using space as the delimiter
+  const words = sentence.split(' ');
+
+  // Reverse each word and store them in a new array
+  const reversedWords = words.map(word => {
+    // Check for punctuation and keep it separate
+    const punctuation = word.match(/[\W]/g);
+    const letters = word.match(/[a-zA-Z]+/g);
+
+    // If there are no letters in the word, return the original word
+    if (!letters) {
+      return word;
+    }
+
+    // Reverse the letters in the word and add punctuation back
+    return letters.join('').split('').reverse().join('') + (punctuation ? punctuation.join('') : '');
+  });
+
+  // Join the reversed words to form the final sentence
+  const reversedSentence = reversedWords.join(' ');
+
+  return reversedSentence;
+}
+
+const inputSentence = prompt("Enter the String");
+const reversedSentence = reverseWords(inputSentence);
+console.log(reversedSentence); // Output: "sihT si a ynnus yad!";

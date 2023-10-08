@@ -1,0 +1,40 @@
+Q:Create an array with the values (1, 2, 3, 4, 5, 6, 7) and shuffle it.
+
+
+
+
+import java.util.Random;
+
+public class ShuffleArray {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5, 6, 7};
+
+        // Shuffle the array
+        shuffleArray(array);
+
+        // Print the shuffled array
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+    }
+
+    public static void shuffleArray(int[] array) {
+        Random random = new Random();
+
+        // Start from the last element and move backward
+        for (int i = array.length - 1; i > 0; i--) {
+            // Generate a random index between 0 and i (inclusive)
+            int j = random.nextInt(i + 1);
+
+            // Swap array[i] and array[j] to shuffle
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+
+            // At each iteration, we swap the current element (array[i]) with a random
+            // element (array[j]) that comes before it or itself. This shuffling process
+            // ensures that each element has an equal probability of ending up in any
+            // position within the array, resulting in a well-shuffled array.
+        }
+    }
+}

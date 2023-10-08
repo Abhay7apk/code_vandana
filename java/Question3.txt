@@ -1,0 +1,43 @@
+Q3:Check if the input is pangram or not. (A pangram is a sentence that contains all the
+alphabets from A to Z).
+
+
+
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class PangramChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a sentence: ");
+        
+        // Read the input sentence from the user
+        String input = scanner.nextLine().toLowerCase(); // Convert to lowercase for consistency
+        
+        boolean isPangram = isPangram(input);
+        
+        if (isPangram) {
+            System.out.println("The input is a pangram.");
+        } else {
+            System.out.println("The input is not a pangram.");
+        }
+        
+        scanner.close(); // Close the scanner when done
+    }
+
+    public static boolean isPangram(String s) {
+        // Create a set to store unique lowercase letters
+        Set<Character> letterSet = new HashSet<>();
+        
+        for (char c : s.toCharArray()) {
+            // Check if the character is a lowercase letter
+            if ('a' <= c && c <= 'z') {
+                letterSet.add(c); // Add it to the set
+            }
+        }
+        
+        // Check if the set contains all 26 lowercase letters
+        return letterSet.size() == 26;
+    }
+}
